@@ -1,0 +1,34 @@
+venv/
+__pycache__/
+*.pyc
+
+# ==================================================
+# DATASET - exclude everything
+# ==================================================
+# Ignore the entire dataset
+data/
+
+# Explicitly allow the metadata file
+!data/processed/
+!data/processed/metadata.csv
+# ==================================================
+# GENERATED OUTPUTS
+# ==================================================
+flask_app/static/uploads/
+flask_app/outputs/
+gradcam/outputs/
+
+# ==================================================
+# OTHER LARGE MODELS
+# ==================================================
+models/custom_cnn.keras
+models/diagnostic_client1.keras
+models/vgg16_brain_tumor.keras
+models/federated_vgg16_round1.keras
+models/federated_vgg16_round2.keras
+models/federated_vgg16_round3.keras
+models/federated_vgg16_round4.keras
+models/federated_vgg16_final.keras
+
+# Keep the final federated model
+!models/federated_vgg16_round5.keras

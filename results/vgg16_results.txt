@@ -1,0 +1,11 @@
+VGG16 TEST RESULTS
+==================================================
+
+Accuracy : 0.9500
+Precision: 0.9500
+Recall   : 0.9852
+F1 Score : 0.9673
+
+Confusion Matrix:
+[[152  28]
+ [  8 532]]

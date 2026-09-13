@@ -1,0 +1,12 @@
+IMG_SIZE = (224, 224)
+BATCH_SIZE = 32
+SEED = 42
+
+LEARNING_RATE = 1e-4
+EPOCHS = 50
+EARLY_STOPPING_PATIENCE = 10
+
+# Federated-learning settings from the reference report
+NUM_CLIENTS = 3
+LOCAL_EPOCHS = 5
+FEDERATED_ROUNDS = 20

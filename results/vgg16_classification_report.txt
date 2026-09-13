@@ -1,0 +1,16 @@
+VGG16 CLASSIFICATION REPORT
+==================================================
+
+              precision    recall  f1-score   support
+
+    No Tumor       0.95      0.84      0.89       180
+       Tumor       0.95      0.99      0.97       540
+
+    accuracy                           0.95       720
+   macro avg       0.95      0.91      0.93       720
+weighted avg       0.95      0.95      0.95       720
+
+Accuracy : 0.9500
+Precision: 0.9500
+Recall   : 0.9852
+F1 Score : 0.9673

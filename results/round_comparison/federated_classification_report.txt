@@ -1,0 +1,17 @@
+FEDERATED VGG16 CLASSIFICATION REPORT
+============================================================
+
+Round-wise Results
+
+ Round Loss  Accuracy (%)  Precision (%)  Recall (%)  F1 Score (%)
+     1 None         95.42          97.56       96.30         96.92
+     2 None         96.11          97.76       97.04         97.40
+     3 None         96.53          98.31       97.04         97.67
+     4 None         96.94          98.50       97.41         97.95
+     5 None         97.22          98.51       97.78         98.14
+
+BEST RESULTS
+============================================================
+Best Accuracy : Round 5 (97.22%)
+Best F1 Score : Round 5 (98.14%)
+Best Recall   : Round 5 (97.78%)
