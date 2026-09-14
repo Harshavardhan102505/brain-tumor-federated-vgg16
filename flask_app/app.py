@@ -534,21 +534,27 @@ def predict():
     # --------------------------------------------------------
 
     try:
+    # Normal model prediction
+    prediction = model.predict(
+        input_array,
+        verbose=0
+    )
 
-        heatmap, probability = (
-            generate_gradcam(
-                input_array
-            )
-        )
+    probability = float(prediction[0][0])
 
-    except Exception as error:
+    # Generate Grad-CAM
+    heatmap, _ = generate_gradcam(
+        input_array
+    )
 
-        return render_template(
-            "index.html",
-            error=(
-                f"Analysis failed: {error}"
-            )
-        )
+except Exception as error:
+
+    print(f"Prediction error: {error}")
+
+    return render_template(
+        "index.html",
+        error=f"Analysis failed: {error}"
+    )
 
 
     # --------------------------------------------------------
