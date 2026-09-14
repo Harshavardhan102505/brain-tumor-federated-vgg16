@@ -30,7 +30,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 MODEL_PATH = (
     PROJECT_ROOT
     / "models"
-    / "federated_vgg16_round5.keras"
+    / "federated_vgg16_round5.h5"
 )
 
 UPLOAD_FOLDER = (
@@ -709,8 +709,10 @@ if __name__ == "__main__":
     )
     print()
 
+    port = int(os.environ.get("PORT", 5000))
+
     app.run(
-        host="127.0.0.1",
-        port=5000,
+        host="0.0.0.0",
+        port=port,
         debug=False
     )
