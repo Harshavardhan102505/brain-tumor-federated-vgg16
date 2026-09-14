@@ -470,17 +470,12 @@ def predict():
             url_for("home")
         )
 
-    if not allowed_file(
-        file.filename
-    ):
+    if not allowed_file(file.filename):
 
         return render_template(
             "index.html",
-            error=(
-                "Please upload a JPG, JPEG or PNG image."
-            )
+            error="Please upload a JPG, JPEG or PNG image."
         )
-
 
     # --------------------------------------------------------
     # SECURE FILENAME
@@ -499,7 +494,6 @@ def predict():
         str(upload_path)
     )
 
-
     # --------------------------------------------------------
     # OPEN IMAGE
     # --------------------------------------------------------
@@ -514,11 +508,8 @@ def predict():
 
         return render_template(
             "index.html",
-            error=(
-                "The uploaded file is not a valid image."
-            )
+            error="The uploaded file is not a valid image."
         )
-
 
     # --------------------------------------------------------
     # PREPROCESS
@@ -528,34 +519,35 @@ def predict():
         image
     )
 
-
     # --------------------------------------------------------
     # PREDICTION + GRAD-CAM
     # --------------------------------------------------------
 
     try:
-    # Normal model prediction
-    prediction = model.predict(
-        input_array,
-        verbose=0
-    )
 
-    probability = float(prediction[0][0])
+        prediction = model.predict(
+            input_array,
+            verbose=0
+        )
 
-    # Generate Grad-CAM
-    heatmap, _ = generate_gradcam(
-        input_array
-    )
+        probability = float(
+            prediction[0][0]
+        )
 
-except Exception as error:
+        heatmap, _ = generate_gradcam(
+            input_array
+        )
 
-    print(f"Prediction error: {error}")
+    except Exception as error:
 
-    return render_template(
-        "index.html",
-        error=f"Analysis failed: {error}"
-    )
+        print(
+            f"Prediction error: {error}"
+        )
 
+        return render_template(
+            "index.html",
+            error=f"Analysis failed: {error}"
+        )
 
     # --------------------------------------------------------
     # CLASSIFICATION
@@ -574,20 +566,16 @@ except Exception as error:
         predicted_class = "No Tumor"
 
         confidence = (
-            (1 - probability)
-            * 100
+            (1 - probability) * 100
         )
-
 
     tumor_probability = (
         probability * 100
     )
 
     no_tumor_probability = (
-        (1 - probability)
-        * 100
+        (1 - probability) * 100
     )
-
 
     # --------------------------------------------------------
     # OUTPUT FILENAMES
@@ -605,7 +593,6 @@ except Exception as error:
         f"{stem}_heatmap.jpg"
     )
 
-
     overlay_path = (
         OUTPUT_FOLDER
         / overlay_filename
@@ -615,7 +602,6 @@ except Exception as error:
         OUTPUT_FOLDER
         / heatmap_filename
     )
-
 
     # --------------------------------------------------------
     # SAVE GRAD-CAM
@@ -635,7 +621,6 @@ except Exception as error:
         heatmap,
         heatmap_path
     )
-
 
     # --------------------------------------------------------
     # RETURN RESULT
@@ -680,7 +665,6 @@ except Exception as error:
             filename=heatmap_filename
         )
     )
-
 
 # ============================================================
 # SERVE OUTPUT FILES
